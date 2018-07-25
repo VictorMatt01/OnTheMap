@@ -12,8 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    var udacitySessionId: String? = nil
+    
+    var studentLoactionArray:[StudentLocation] = []
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -41,6 +44,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
 }
 
+struct StudentLocation {
+    var createdAt:String
+    var firstName:String
+    var lastName:String
+    var mapString:String
+    var mediaURL:String
+    var objectId:String
+    var uniqueKey:String
+    var updatedAt:String
+    var latitude:NSNumber
+    var longitude:NSNumber
+    
+    init(dictionary: NSDictionary) {
+        self.createdAt = dictionary["createdAt"] as? String ?? ""
+        self.firstName = dictionary["firstName"] as? String ?? ""
+        self.lastName = dictionary["lastName"] as? String ?? ""
+        self.mapString = dictionary["mapString"] as? String ?? ""
+        self.mediaURL = dictionary["mediaURL"] as? String ?? ""
+        self.objectId = dictionary["objectId"] as? String ?? ""
+        self.uniqueKey = dictionary["uniqueKey"] as? String ?? ""
+        self.updatedAt = dictionary["updatedAt"] as? String ?? ""
+        self.latitude = dictionary["latitude"] as? NSNumber ?? 0
+        self.longitude = dictionary["longitude"] as? NSNumber ?? 0
+    }
+    
+}
